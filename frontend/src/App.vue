@@ -1,47 +1,82 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div id="app">
+    <div v-if="!isAuthenticated" class="auth-container">
+      <LoginForm v-if="showLogin" @login-success="handleAuthSuccess" @switch-to-register="showLogin = false" />
+      <RegisterForm v-else @register-success="handleAuthSuccess" @switch-to-login="showLogin = true" />
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <KanbanBoard v-else-if="!showNotifications" :user="user" @logout="handleLogout" @show-notifications="showNotifications = true" />
+    <NotificationsPage v-else @back-to-dashboard="showNotifications = false" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import LoginForm from './components/LoginForm.vue'
+import RegisterForm from './components/RegisterForm.vue'
+import KanbanBoard from './components/KanbanBoard.vue'
+import NotificationsPage from './components/NotificationsPage.vue'
+
+export default {
+  name: 'App',
+  components: {
+    LoginForm,
+    RegisterForm,
+    KanbanBoard,
+    NotificationsPage
+  },
+  data() {
+    return {
+      isAuthenticated: false,
+      user: null,
+      showLogin: true,
+      showNotifications: false
+    }
+  },
+  mounted() {
+    const token = localStorage.getItem('token')
+    const user = localStorage.getItem('user')
+    if (token && user) {
+      this.isAuthenticated = true
+      this.user = JSON.parse(user)
+    }
+  },
+  methods: {
+    handleAuthSuccess(user) {
+      this.isAuthenticated = true
+      this.user = user
+    },
+    handleLogout() {
+      this.isAuthenticated = false
+      this.user = null
+    }
+  }
+}
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #20252A;
+  overflow-x: hidden;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+#app {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #20252A;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.auth-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 </style>

@@ -24,7 +24,11 @@ class AuthController extends Controller
     {
         try {
 
-            $user = $this->userRepository->createUser($r->validated());
+            $data = $r->validated();
+            if ($r->hasFile('image')) {
+                $data['image'] = $r->file('image');
+            }
+            $user = $this->userRepository->createUser($data);
 
             $token = JWTAuth::fromUser($user);
 
@@ -66,7 +70,7 @@ class AuthController extends Controller
                     'phone_number' => $user->phone_number,
                     'email' => $user->email,
                     'address' => $user->address,
-                    'image' => $user->image,
+                    'image' => $user->image ? asset('storage/' . $user->image) : null,
                 ],
                 'token' => $token
             ]);

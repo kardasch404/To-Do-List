@@ -3,19 +3,25 @@
 namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserRepository
 {
 
     public function createUser(array $data)
     {
+        $imagePath = null;
+        if (isset($data['image']) && $data['image']) {
+            $imagePath = $data['image']->store('users', 'public');
+        }
+        
         $userData = [
             'full_name' => $data['full_name'],
             'phone_number' => $data['phone_number'],
             'email' => $data['email'],
             'address' => $data['address'],
             'mot_de_passe' => Hash::make($data['mot_de_passe']),
-            'image' => $data['image'],
+            'image' => $imagePath,
         ];
         $user = User::create($userData);
         return $user;
