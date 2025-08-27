@@ -80,7 +80,7 @@ To-Do-List/
 1. **Clone the repository**
    ```bash
    cd C:\laragon\www
-   git clone <https://github.com/kardasch404/To-Do-List.git> To-Do-List
+   git clone https://github.com/kardasch404/To-Do-List.git
    cd To-Do-List/backend
    ```
 
