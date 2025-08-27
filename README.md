@@ -8,18 +8,14 @@ A modern, full-stack task management application built with Laravel (Backend) an
 - **Task Management**: Create, read, update, and delete tasks
 - **Kanban Board**: Drag and drop tasks between columns (To Do, Doing, Done)
 - **Real-time Notifications**: Get notified when tasks are created, updated, or deleted
-- **User Profiles**: Profile management with image upload support
-- **Responsive Design**: Modern UI with custom color scheme (#FFD900 & #20252A)
-- **File Upload**: Support for user profile images
 
 ## Tech Stack
 
 ### Backend
-- **Laravel 10+** - PHP Framework
+- **Laravel 10** - PHP Framework
 - **JWT Authentication** - Secure token-based authentication
 - **MySQL** - Database
 - **Repository Pattern** - Clean architecture
-- **File Storage** - Image upload handling
 
 ### Frontend
 - **Vue.js 3** - Progressive JavaScript framework
@@ -164,7 +160,7 @@ PUT    /api/tasks/{id} - Update task
 DELETE /api/tasks/{id} - Delete task
 ```
 
-## 📊 Database Schema
+## Database Schema
 
 ### Users Table
 ```sql
@@ -188,7 +184,7 @@ DELETE /api/tasks/{id} - Delete task
 - created_at, updated_at (Timestamps)
 ```
 
-## 🎨 Frontend Components
+## Frontend Components
 
 ### Main Components
 - **LoginForm.vue** - User authentication form
@@ -228,7 +224,7 @@ To Do (pending) → Doing (in_progress) → Done (completed)
 - **Doing**: In progress (is_done: false, status: in_progress)  
 - **Done**: Completed (is_done: true, status: completed)
 
-## 🔧 Configuration
+## Configuration
 
 ### Backend Configuration
 - JWT secret in `.env`
