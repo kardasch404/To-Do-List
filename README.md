@@ -1,28 +1,14 @@
-# 📋 To-Do List Application
-
-A modern, full-stack task management application built with Laravel (Backend) and Vue.js (Frontend) featuring real-time notifications, drag-and-drop functionality, and secure JWT authentication.
-
-## Features
-
-- **User Authentication**: Secure registration and login with JWT tokens
-- **Task Management**: Create, read, update, and delete tasks
-- **Kanban Board**: Drag and drop tasks between columns (To Do, Doing, Done)
-- **Real-time Notifications**: Get notified when tasks are created, updated, or deleted
-
-## Tech Stack
+# To-Do List Application
 
 ### Backend
-- **Laravel 10** - PHP Framework
-- **JWT Authentication** - Secure token-based authentication
-- **MySQL** - Database
-- **Repository Pattern** - Clean architecture
+- **Laravel 10** 
+- **JWT Authentication** 
+- **MySQL** 
+- **Repository Pattern** 
 
 ### Frontend
-- **Vue.js 3** - Progressive JavaScript framework
-- **Axios** - HTTP client for API calls
-- **Drag & Drop** - Native HTML5 drag and drop
-- **Local Storage** - Client-side data persistence
-- **Responsive CSS** - Custom styling
+- **Vue.js 3** 
+- **Axios** 
 
 ## 📁 Project Structure
 
@@ -65,7 +51,7 @@ To-Do-List/
 ## 🔧 Installation
 
 ### Prerequisites
-- PHP 8.1+
+- PHP 8
 - Composer
 - Node.js
 - MySQL
@@ -187,32 +173,11 @@ DELETE /api/tasks/{id} - Delete task
 ## Frontend Components
 
 ### Main Components
-- **LoginForm.vue** - User authentication form
-- **RegisterForm.vue** - User registration form
-- **KanbanBoard.vue** - Main task management interface
-- **NotificationsPage.vue** - Dedicated notifications page
-- **NotificationCenter.vue** - Notification popup component
-
-### Key Features
-- **Drag & Drop**: Tasks can be moved between columns
-- **Real-time Updates**: Notifications appear instantly
-- **User Avatar**: Displays user initials in circular avatar
-- **Responsive Design**: Works on desktop and mobile
-
-## Authentication Flow
-
-1. **Registration**: User creates account with profile image
-2. **Login**: JWT token generated and stored
-3. **API Requests**: Token sent in Authorization header
-4. **Logout**: Token invalidated on server
-
-## 📱 Usage
-
-1. **Register/Login**: Create account or sign in
-2. **Create Tasks**: Add new tasks using the form
-3. **Manage Tasks**: Drag tasks between columns (To Do → Doing → Done)
-4. **View Notifications**: Click notification bell to see updates
-5. **Profile Menu**: Click avatar to access profile and logout
+- **LoginForm.vue** 
+- **RegisterForm.vue** 
+- **KanbanBoard.vue** 
+- **NotificationsPage.vue** 
+- **NotificationCenter.vue** 
 
 ## Task Status Flow
 
@@ -220,22 +185,7 @@ DELETE /api/tasks/{id} - Delete task
 To Do (pending) → Doing (in_progress) → Done (completed)
 ```
 
-- **To Do**: New tasks (is_done: false, status: pending)
-- **Doing**: In progress (is_done: false, status: in_progress)  
-- **Done**: Completed (is_done: true, status: completed)
 
-## Configuration
-
-### Backend Configuration
-- JWT secret in `.env`
-- Database connection settings
-- File storage configuration
-- CORS settings for frontend
-
-### Frontend Configuration
-- API base URL in `services/api.js`
-- Echo/Pusher configuration for real-time features
-- Color scheme variables in CSS
 
 
 ---
